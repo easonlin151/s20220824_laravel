@@ -38,6 +38,21 @@ Route::get('/admin_index', function () {
     return view('admin.index');
 });
 
+//admin prefix
+Route::prefix('/admin')->group(function () {
+    Route::get('/student' ,function() {
+        // dd('admin student');
+        return view('admin.student');
+    });
+
+    Route::get('/product', function() {
+        // dd('admin product');
+        return view('admin.product');
+    });
+});
+
+
+
 Route::get('/eat/{name}/{num}', function (Request $request,$name,$num) {
 
     $data = [
@@ -46,6 +61,7 @@ Route::get('/eat/{name}/{num}', function (Request $request,$name,$num) {
     ];
     return view('eat',['data'=> $data]);
 });
+
 
 
 
