@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\CarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +53,12 @@ Route::prefix('/admin')->group(function () {
     });
 });
 
+// single controller
+Route::get('/test',[TestController::class, 'testFun']);
+Route::get('/dis7',[TestController::class, 'dis7']);
+Route::get('/car',[CarController::class, 'index']);
+
+
 
 
 Route::get('/eat/{name}/{num}', function (Request $request,$name,$num) {
@@ -62,6 +70,19 @@ Route::get('/eat/{name}/{num}', function (Request $request,$name,$num) {
     return view('eat',['data'=> $data]);
 });
 
+
+Route::get('/dis7/{name}/{num}', function (Request $request,$name,$num) {
+
+    $data = [
+        'name' => $name,
+        'num' => $num
+    ];
+    return view('eat',['data'=> $data]);
+});
+// 練習三
+// 建立CarController
+// index function
+// car.index.blade.php
 
 
 
